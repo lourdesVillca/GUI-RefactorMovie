@@ -13,5 +13,6 @@ public abstract class Movie {
     }
 
     public abstract double calculateAmount(int daysRented);
+    public abstract int calculateFrequentRenterPoints(int daysRented);
 
 }

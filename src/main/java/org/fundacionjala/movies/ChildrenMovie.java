@@ -1,24 +1,32 @@
 package org.fundacionjala.movies;
 
 /**
- * Created by LuLy on 23/08/2016.
+ * Class to calculate the total amount and the frequent point.
  */
 public class ChildrenMovie extends Movie {
 
-    public static final double CHILDRENPRICE = 1.5;
+    private static final double CHILDRENPRICE = 1.5;
 
+    private static final int DAYS = 3;
+
+    /**
+     * Constructor
+     *
+     * @param title of the movie
+     */
     public ChildrenMovie(String title) {
         super(title);
     }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public double calculateAmount(int daysRented){
+    public double calculateAmount(int daysRented) {
         double thisAmount = 1.5;
-        if (daysRented > 3)
-            thisAmount += (daysRented - 3) * CHILDRENPRICE;
+        if (daysRented > DAYS)
+            thisAmount += (daysRented - DAYS) * CHILDRENPRICE;
         return thisAmount;
     }
-    @Override
-    public int calculateFrequentRenterPoints(int daysRented){
-        return 1;
-    }
+
 }

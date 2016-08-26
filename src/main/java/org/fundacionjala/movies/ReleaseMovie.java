@@ -1,24 +1,38 @@
 package org.fundacionjala.movies;
 
 /**
- * Created by LuLy on 23/08/2016.
+ * Calculates the total amount and the frequent renter point.
  */
 public class ReleaseMovie extends Movie {
 
-    public static final int RELEASEPRICE = 3;
+    private static final int RELEASEPRICE = 3;
 
+    private static final int DAYS = 1;
+
+    /**
+     * Constructor.
+     *
+     * @param title of the release movie.
+     */
     public ReleaseMovie(String title) {
         super(title);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public double calculateAmount(int daysRented) {
         double thisAmount = daysRented * RELEASEPRICE;
         return thisAmount;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int calculateFrequentRenterPoints(int daysRented) {
-        return (daysRented > 1) ? 2 : 1;
+        return (daysRented > DAYS) ? 2 : 1;
     }
+
 }

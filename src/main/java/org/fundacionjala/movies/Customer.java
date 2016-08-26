@@ -1,66 +1,26 @@
 package org.fundacionjala.movies;
 
-import java.util.LinkedList;
-import java.util.List;
-
+/**
+ * Manage customer information.
+ */
 public class Customer {
-
-    private static final String BREAK_LINE = "\n";
-    public static final String TAB = "\t";
 
     private final String name;
 
-    private final List<Rental> rentals = new LinkedList<Rental>();
-
+    /**
+     * Constructor.
+     *
+     * @param name of the Customer
+     */
     public Customer(String name) {
         this.name = name;
     }
 
-    public void addRental(Rental rental) {
-        rentals.add(rental);
-    }
-
-    public int calculateTotalFrequentRenterPoints() {
-        int frequentRenterPoints = 0;
-        for (Rental rental : rentals) {
-            // add frequent renter points
-            frequentRenterPoints += rental.calculateFrequentRenterPoints();
-        }
-        return frequentRenterPoints;
-    }
-
-    public double calculateTotalAmount() {
-        double totalAmount = 0;
-        for (Rental rental : rentals) {
-            //determine amounts for each line
-            totalAmount += rental.calculateAmount();
-        }
-        return totalAmount;
-    }
-
-    public String statement() {
-        StringBuilder result = new StringBuilder();
-        result.append("Rental Record for ");
-        result.append(getName());
-        result.append(BREAK_LINE);
-        for (Rental rental : rentals) {
-            //show figures for this rental
-            result.append(TAB);
-            result.append(rental.getMovie().getTitle());
-            result.append(TAB);
-            result.append(rental.calculateAmount());
-            result.append(BREAK_LINE);
-        }
-        //add footer lines
-        result.append("Amount owed is ");
-        result.append(calculateTotalAmount());
-        result.append(BREAK_LINE);
-        result.append("You earned ");
-        result.append(calculateTotalFrequentRenterPoints());
-        result.append(" frequent renter points");
-        return result.toString();
-    }
-
+    /**
+     * Method that returns the name of the customer.
+     *
+     * @return the name of the customer.
+     */
     public String getName() {
         return name;
     }

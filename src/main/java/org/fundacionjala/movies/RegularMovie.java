@@ -1,27 +1,32 @@
 package org.fundacionjala.movies;
 
 /**
- * Created by LuLy on 23/08/2016.
+ * Calculate the total amount for a Regular movie.
  */
-public class RegularMovie extends Movie{
+public class RegularMovie extends Movie {
 
-    public static final double REGULARPRICE = 1.5;
+    private static final double REGULARPRICE = 1.5;
 
+    private static final int DAYS = 2;
+
+    /**
+     * Constructor
+     *
+     * @param title the title of the movie.
+     */
     public RegularMovie(String title) {
         super(title);
     }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public double calculateAmount(int daysRented){
-       double thisAmount = 2;
-        if (daysRented > 2)
-            thisAmount += (daysRented - 2) * REGULARPRICE;
+    public double calculateAmount(int daysRented) {
+        double thisAmount = 2;
+        if (daysRented > DAYS)
+            thisAmount += (daysRented - DAYS) * REGULARPRICE;
         return thisAmount;
     }
-
-    @Override
-    public int calculateFrequentRenterPoints(int daysRented){
-       return 1;
-    }
-
 
 }

@@ -14,7 +14,7 @@ public class ManageRental {
 
     private Customer customer;
 
-    private final List<Rental> rentals = new LinkedList<Rental>();;
+    private List<Rental> rentals;
 
     /**
      * Constructor.
@@ -23,6 +23,7 @@ public class ManageRental {
      */
     public ManageRental(Customer customer) {
         this.customer = customer;
+        rentals = new LinkedList<Rental>();;
     }
 
     /**
@@ -38,12 +39,8 @@ public class ManageRental {
      * Method to calculate the total Frequent renter points.
      */
     public int calculateTotalFrequentRenterPoints() {
-        int frequentRenterPoints = 0;
-        for (Rental rental : rentals) {
-            // add frequent renter points
-            frequentRenterPoints += rental.calculateFrequentRenterPoints();
-        }
-        return frequentRenterPoints;
+        return rentals.stream()
+                .mapToInt(Rental::calculateFrequentRenterPoints).sum();
     }
 
     /**
@@ -52,12 +49,8 @@ public class ManageRental {
      * @return the calculated total amount.
      */
     public double calculateTotalAmount() {
-        double totalAmount = 0;
-        for (Rental rental : rentals) {
-            //determine amounts for each line
-            totalAmount += rental.calculateAmount();
-        }
-        return totalAmount;
+        return rentals.stream()
+                .mapToDouble(Rental::calculateAmount).sum();
     }
 
     /**
@@ -87,5 +80,7 @@ public class ManageRental {
         result.append(" frequent renter points");
         return result.toString();
     }
+
+
 
 }

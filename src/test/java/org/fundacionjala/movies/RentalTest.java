@@ -21,7 +21,7 @@ public class RentalTest {
     @Test
     public void test_calculateFrequentRenterPointsForNewReleaseMovieWithRentedDaysMinorThanTwo() {
         final int daysRented = 1;
-        Rental rental = new Rental(new ReleaseMovie(movieTitle), daysRented);
+        Rental rental = new ReleaseRentedMovie(new Movie(movieTitle), daysRented);
         final int actualResult = 1;
         assertEquals(actualResult, rental.calculateFrequentRenterPoints());
     }
@@ -29,7 +29,7 @@ public class RentalTest {
     @Test
     public void test_calculateFrequentRenterPointsForNewReleaseMovieWithRentedDaysGreaterThanTwo() {
         final int daysRented = 3;
-        Rental rental = new Rental(new ReleaseMovie(movieTitle), daysRented);
+        Rental rental = new ReleaseRentedMovie(new Movie(movieTitle), daysRented);
         final int actualResult = 2;
         assertEquals(actualResult, rental.calculateFrequentRenterPoints());
     }
@@ -37,7 +37,7 @@ public class RentalTest {
     @Test
     public void test_calculateFrequentRenterPointsForOtherKindOfMovie() {
         final int daysRented = 2;
-        Rental rental = new Rental(new RegularMovie(movieTitle), daysRented);
+        Rental rental = new RegularRentedMovie(new Movie(movieTitle), daysRented);
         final int actualResult = 1;
         assertEquals(actualResult, rental.calculateFrequentRenterPoints());
     }
@@ -45,7 +45,7 @@ public class RentalTest {
     @Test
     public void test_rentalIsCreated() {
         final int daysRented = 2;
-        Rental rental = new Rental(new RegularMovie(movieTitle), daysRented);
+        Rental rental = new RegularRentedMovie(new Movie(movieTitle), daysRented);
         assertNotNull(rental);
     }
 

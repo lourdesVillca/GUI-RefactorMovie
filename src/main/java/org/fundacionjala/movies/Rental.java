@@ -3,30 +3,32 @@ package org.fundacionjala.movies;
 /**
  * Manage the rental movie for a customer
  */
-public class Rental {
+public abstract class Rental {
+
+    protected static final int RENTED_POINT = 1;
 
     private final Movie movie;
+    private double increment;
+    private double thisAmount;
+    protected double daysLimit;
+    protected int daysRented;
 
-    private final int daysRented;
 
     /**
      * Constructor.
      *
-     * @param movie movie to be rented
+     * @param movie      movie to be rented
      * @param daysRented days that a movie is rented
-     */
-    public Rental(Movie movie, int daysRented) {
+     * @param thisAmount amount to pay for movie
+     * @param increment the value that increment the amount of the rental
+     * @param limitDays limit days that a rented movie has
+   */
+    public Rental(Movie movie, int daysRented, double thisAmount, double increment, int limitDays) {
         this.movie = movie;
         this.daysRented = daysRented;
-    }
-
-    /**
-     * Get the days that a movie was rented
-     *
-     * @return the rented days
-     */
-    public int getDaysRented() {
-        return daysRented;
+        this.thisAmount = thisAmount;
+        this.increment = increment;
+        this.daysLimit = limitDays;
     }
 
     /**
@@ -39,20 +41,24 @@ public class Rental {
     }
 
     /**
-     * Calculate the frequent rented point.
+     * Calculate the amount of the rented movie.
      *
-     * @return the calculated frequent renter points.
+     * @return the calculated amount.
      */
-    public int calculateFrequentRenterPoints() {
-        return movie.calculateFrequentRenterPoints(daysRented);
+    public double calculateAmount() {
+        if (daysRented > daysLimit) {
+            thisAmount += (this.daysRented - daysLimit) * this.increment;
+        }
+        return thisAmount;
     }
 
     /**
-     * Calculate the amount for movie.
+     * Calculate the frequent renter points
      *
-     * @return the calculated amount for a movie.
+     * @return the rented point.
      */
-    public double calculateAmount() {
-        return movie.calculateAmount(daysRented);
+    public int calculateFrequentRenterPoints() {
+        return RENTED_POINT;
     }
+
 }

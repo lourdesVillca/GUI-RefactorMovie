@@ -6,9 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Test for {@link RegularMovie}
+ * Test for {@link RegularRentedMovie}
  */
-public class ReleaseMovieTest {
+public class ReleaseRentedMovieTest {
 
     public static final int DELTA = 0;
 
@@ -23,24 +23,24 @@ public class ReleaseMovieTest {
     public void test_calculateAmountToRentDaysMinorThanTwoDays() {
         final int daysRented = 3;
         final double actualResult = 9;
-        Movie movie = new ReleaseMovie(releaseMovieTitle);
-        assertEquals(actualResult, movie.calculateAmount(daysRented), DELTA);
+        Rental rentedMovie = new ReleaseRentedMovie(new Movie(releaseMovieTitle), daysRented);
+        assertEquals(actualResult, rentedMovie.calculateAmount(), DELTA);
     }
 
     @Test
     public void test_calculateFrequentRenterPointsToRentDaysEqualToOne() {
         final int daysRented = 1;
         final double actualResult = 1;
-        Movie movie = new ReleaseMovie(releaseMovieTitle);
-        assertEquals(actualResult, movie.calculateFrequentRenterPoints(daysRented), DELTA);
+        Rental rentedMovie = new ReleaseRentedMovie(new Movie(releaseMovieTitle), daysRented);
+        assertEquals(actualResult, rentedMovie.calculateFrequentRenterPoints(), DELTA);
     }
 
     @Test
     public void test_calculateFrequentRenterPointsToRentDaysGreaterThanOne() {
         final int daysRented = 3;
         final double actualResult = 2;
-        Movie movie = new ReleaseMovie(releaseMovieTitle);
-        assertEquals(actualResult, movie.calculateFrequentRenterPoints(daysRented), DELTA);
+        Rental rentedMovie = new ReleaseRentedMovie(new Movie(releaseMovieTitle), daysRented);
+        assertEquals(actualResult, rentedMovie.calculateFrequentRenterPoints(), DELTA);
     }
 
 }

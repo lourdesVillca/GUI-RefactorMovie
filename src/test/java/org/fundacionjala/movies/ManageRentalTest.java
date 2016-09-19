@@ -32,8 +32,8 @@ public class ManageRentalTest {
     public void test_calculateTotalFrequentRenterPoints() {
         final int daysRented = 2;
         final int actualResult = 3;
-        manageRental.addRental(new Rental(new ReleaseMovie(releaseMovieTitle), daysRented));
-        manageRental.addRental(new Rental(new RegularMovie(regularMovieTitle), daysRented));
+        manageRental.addRental(new ReleaseRentedMovie(new Movie(releaseMovieTitle), daysRented));
+        manageRental.addRental(new RegularRentedMovie(new Movie(regularMovieTitle), daysRented));
         assertEquals(actualResult, manageRental.calculateTotalFrequentRenterPoints());
     }
 
@@ -41,8 +41,8 @@ public class ManageRentalTest {
     public void test_calculateTotalAmount() {
         final int daysRented = 2;
         final double actualResult = 8;
-        manageRental.addRental(new Rental(new ReleaseMovie(releaseMovieTitle), daysRented));
-        manageRental.addRental(new Rental(new RegularMovie(regularMovieTitle), daysRented));
+        manageRental.addRental(new ReleaseRentedMovie(new Movie(releaseMovieTitle), daysRented));
+        manageRental.addRental(new RegularRentedMovie(new Movie(regularMovieTitle), daysRented));
         assertEquals(actualResult, manageRental.calculateTotalAmount(), DELTA);
     }
 

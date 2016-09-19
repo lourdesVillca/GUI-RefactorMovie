@@ -3,7 +3,7 @@ package org.fundacionjala.movies;
 /**
  * Manage information of movies.
  */
-public abstract class Movie {
+public class Movie {
 
     private static final int RENTED_POINT = 1;
 
@@ -25,24 +25,6 @@ public abstract class Movie {
      */
     public String getTitle() {
         return title;
-    }
-
-    /**
-     * Calculate the amount of the movie.
-     *
-     * @param daysRented days that a movie is rented
-     * @return the calculated amount.
-     */
-    public abstract double calculateAmount(int daysRented);
-
-    /**
-     * Calculate the frequent points
-     *
-     * @param daysRented days that ba movie is rented.
-     * @return the rented point.
-     */
-    public int calculateFrequentRenterPoints(int daysRented) {
-        return RENTED_POINT;
     }
 
 }

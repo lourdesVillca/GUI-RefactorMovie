@@ -81,6 +81,4 @@ public class ManageRental {
         return result.toString();
     }
 
-
-
 }
